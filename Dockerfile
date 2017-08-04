@@ -26,6 +26,7 @@ RUN apt-get install --fix-missing -y \
     libffi-dev \
     libssl-dev
 
+RUN apt-get install python3-setuptools
 # install mitmproxy
 RUN pip3 install mitmproxy
 
