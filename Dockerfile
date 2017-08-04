@@ -7,7 +7,10 @@ LABEL license="MIT"
 
 # python3.5 isn't in the default registry
 RUN echo 'deb http://mirrordirector.raspbian.org/raspbian/ testing main contrib non-free rpi' > /etc/apt/sources.list.d/stretch.list 
-RUN apt-get update --fix-missing && apt-get install -y \
+RUN apt-get update --fix-missing
+RUN apt-get dist-upgrade --fix-missing
+RUN apt-get autoremove
+RUN apt-get install --fix-missing -y \
     hostapd \
     dbus \
     net-tools \
@@ -22,9 +25,6 @@ RUN apt-get update --fix-missing && apt-get install -y \
     python3-pip \
     libffi-dev \
     libssl-dev
-
-RUN apt-get dist-upgrade --fix-missing
-RUN apt-get autoremove
 
 # install mitmproxy
 RUN pip3 install mitmproxy
