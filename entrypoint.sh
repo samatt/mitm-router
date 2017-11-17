@@ -91,6 +91,10 @@ if [ ! $? -eq 0 ] ; then
   iptables -t nat -A PREROUTING -i "$AP_IFACE" -p tcp --dport 80 -j REDIRECT --to-port 1337
 fi
 
+iptables -t nat -C PREROUTING -i "$AP_IFACE" -p tcp --dport 443 -j REDIRECT --to-port 1337
+if [ ! $? -eq 0 ] ; then
+  iptables -t nat -A PREROUTING -i "$AP_IFACE" -p tcp --dport 443 -j REDIRECT --to-port 1337
+fi
 # setup handlers
 trap term_handler SIGTERM
 trap term_handler SIGKILL

@@ -1,0 +1,7 @@
+ocker run -it --net host --privileged \
+-e AP_IFACE="wlxec086b1224e5" \
+-e INTERNET_IFACE="wlp4s0" \
+-e SSID="Public" \
+-e MAC="unchanged" \
+-v "$(pwd)/data:/root/data" \
+brannondorsey/mitm-router
